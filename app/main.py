@@ -1,11 +1,11 @@
 from fastapi import FastAPI
+from app.routers import tasks
 
-# Criando instancia do FastAPI
-app = FastAPI(title="TO DO LIST API", version="0.1.0")
+app = FastAPI()
 
+# Registrar rotas
+app.include_router(tasks.router)
 
-# Rota principal
 @app.get("/")
-
-def index():
-    return {"status": "TO DO LIST API is running!!!"}
+def root():
+    return {"message": "API de Gerenciamento de Tarefas"}
