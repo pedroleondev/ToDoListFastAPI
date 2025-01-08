@@ -12,13 +12,13 @@ from app.crud import (
     delete_task,
 )
 
-# Rota de tarefas
+# Rota de tarefas, o APIRouter é utilizado para modularizar as rotas e facilitar a reutilização
 router = APIRouter(prefix="/tasks", tags=["Tarefas"])
 
 # Rotas de tarefas (CRUD)
 
-# Cria uma nova tarefa
-@router.post("/", response_model=Task)
+# Cria uma nova tarefa 
+@router.post("/", response_model=Task, status_code=201) # status_code 201 para indicar que a tarefa foi criada com sucesso
 def create_task_endpoint(task: Task, db: Session = Depends(get_db)):
     return create_task(db, task)
 
