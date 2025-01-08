@@ -21,6 +21,8 @@ from typing import Optional
 #     data_atualizacao: datetime
 
 class Task(SQLModel, table=True):
+    __tablename__ = "tarefas"  # Nome da tabela no banco de dados
+    
     id: Optional[int] = Field(default=None, primary_key=True)
     titulo: str = Field(...)
     descricao: Optional[str] = Field(None)
