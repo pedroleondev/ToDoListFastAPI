@@ -24,12 +24,12 @@ def create_task_endpoint(task: Task, db: Session = Depends(get_db)):
     return create_task(db, task)
 
 # Lista todas as tarefas cadastradas
-@router.get("/", response_model=list[Task], summary="Listar tarefas", description="Endpoint para listas todas as tarefas existentes.")
+@router.get("/", response_model=list[Task], summary="Listar tarefas", description="Endpoint para listar todas as tarefas existentes.")
 def list_tasks_endpoint(db: Session = Depends(get_db)):
     return get_tasks(db)
 
 # Filtra tarefas por estado
-@router.get("/filter", response_model=list[Task], summary="Filtrar tarefas por estados", description="Endpoint para filtrar tarefas por estado.")
+@router.get("/filter", response_model=list[Task], summary="Filtrar tarefas por estado", description="Endpoint para filtrar tarefas por estado.")
 def filter_tasks_by_state_endpoint(estado: str, db: Session = Depends(get_db)):
     tasks = filter_tasks_by_state(db, estado)
     if not tasks:
@@ -45,14 +45,12 @@ def get_task_endpoint(task_id: int, db: Session = Depends(get_db)):
     return task
 
 # Atualiza uma tarefa pelo ID e retorna seus detalhes
-@router.put("/{task_id}", response_model=Task, summary="Atualizar tarefa", description="Endpoint para atualizar info da tarefa.")
+@router.put("/{task_id}", response_model=Task, summary="Atualizar tarefa", description="Endpoint para atualizar informações da tarefa.")
 def update_task_endpoint(task_id: int, task_data: dict, db: Session = Depends(get_db)):
     task = update_task(db, task_id, task_data)
     if not task:
         raise HTTPException(status_code=404, detail="Tarefa não encontrada!")
     return task
-
-
 
 # Deleta uma tarefa pelo ID e retorna uma resposta vazia confirmando a exclusão
 @router.delete("/{task_id}", status_code=204, summary="Deletar tarefa", description="Endpoint para deletar tarefa por ID.")
