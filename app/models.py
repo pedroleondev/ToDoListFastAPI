@@ -20,6 +20,7 @@ from typing import Optional
 #     data_criacao: datetime
 #     data_atualizacao: datetime
 
+# criar o objeto Task para armazenar os dados das tarefas
 class Task(SQLModel, table=True):
     __tablename__ = "tarefas"  # Nome da tabela no banco de dados
     
@@ -29,3 +30,25 @@ class Task(SQLModel, table=True):
     estado: str = Field(..., regex="^(pendente|em andamento|concluída)$")
     data_criacao: datetime = Field(default_factory=datetime.now)
     data_atualizacao: datetime = Field(default_factory=datetime.now)
+
+# criar o objeto users para armazenar os dados de usuários e fazer autenticação
+class User(SQLModel, table=True):
+    __tablename__ = "usuarios"  # Nome da tabela no banco de dados
+    
+    id: Optional[int] = Field(default=None, primary_key=True)
+    usuario: str = Field(...)
+    senha: str = Field(...)
+    senha_criptografada: str = Field(...)
+    data_criacao: datetime = Field(default_factory=datetime.now)
+    data_atualizacao: datetime = Field(default_factory=datetime.now)
+
+# criar o objeto Criar Requisição do usuário para armazenar os dados de requisição
+
+class CreateUserRequest(SQLModel):
+    usuario: str = Field(...)
+    senha: str = Field(...)
+
+# criar o objeto Token para armazenar os dados do token de autenticação
+class Token(SQLModel):
+    access_token: str
+    token_type: str

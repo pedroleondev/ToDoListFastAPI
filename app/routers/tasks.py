@@ -17,8 +17,9 @@ router = APIRouter(prefix="/tasks", tags=["Tarefas"])
 
 # Rotas de tarefas (CRUD)
 
-# Cria uma nova tarefa 
-@router.post("/", response_model=Task, status_code=201, summary="Criar nova tarefa", description="Endpoint para criar uma nova tarefa.") # status_code 201 para indicar que a tarefa foi criada com sucesso
+# Cria uma nova tarefa
+# status_code 201 para indicar que a tarefa foi criada com sucesso
+@router.post("/", response_model=Task, status_code=201, summary="Criar nova tarefa", description="Endpoint para criar uma nova tarefa.") 
 def create_task_endpoint(task: Task, db: Session = Depends(get_db)):
     return create_task(db, task)
 
