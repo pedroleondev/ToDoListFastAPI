@@ -20,7 +20,7 @@ Este projeto é uma API de Gerenciamento de Tarefas construída com FastAPI. Ele
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/pedroleonpython/ToDoListFastAPI.git
+   git clone https://github.com/pedroleondev/ToDoListFastAPI.git
    cd ToDoListFastAPI
    ```
 
