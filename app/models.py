@@ -36,9 +36,9 @@ class User(SQLModel, table=True):
     __tablename__ = "usuarios"  # Nome da tabela no banco de dados
     
     id: Optional[int] = Field(default=None, primary_key=True)
-    usuario: str = Field(...)
+    usuario: str = Field(nullable=False, unique=True, max_length=50)
     senha: str = Field(...)
-    senha_criptografada: str = Field(...)
+    senha_criptografada: str = Field(nullable=False, max_length=255)
     data_criacao: datetime = Field(default_factory=datetime.now)
     data_atualizacao: datetime = Field(default_factory=datetime.now)
 
