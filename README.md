@@ -131,9 +131,9 @@ Este projeto é uma API de Gerenciamento de Tarefas construída com FastAPI. Ele
    docker run -p 8000:8000 todolistfastapi-app
    ```
 3. Use a imagem disponível no Docker Hub:
-```bash
+   ```bash
    docker push pedroleonpython/todolistfastapi-app:0.3
-```
+   ```
 ## Contribuição
 
 Sinta-se à vontade para contribuir com este projeto. Abra uma issue ou envie um pull request com melhorias e correções.
