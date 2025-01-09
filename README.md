@@ -26,8 +26,8 @@ Este projeto é uma API de Gerenciamento de Tarefas construída com FastAPI. Ele
 
 2. Crie e ative um ambiente virtual:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
+   conda create -n env_todolistfastapi python=3.10 -y
+   conda activate <nome_do_ambiente>
    ```
 
 3. Instale as dependências:
@@ -130,7 +130,10 @@ Este projeto é uma API de Gerenciamento de Tarefas construída com FastAPI. Ele
    ```bash
    docker run -p 8000:8000 todolistfastapi-app
    ```
-
+3. Use a imagem disponível no Docker Hub:
+```bash
+   docker push pedroleonpython/todolistfastapi-app:0.3
+```
 ## Contribuição
 
 Sinta-se à vontade para contribuir com este projeto. Abra uma issue ou envie um pull request com melhorias e correções.
